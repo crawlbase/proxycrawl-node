@@ -35,7 +35,7 @@ api.get(url, options);
 Example:
 
 ```javascript
-api.get('https://facebook.com/britneyspears').then(response => {
+api.get('https://www.facebook.com/britneyspears').then(response => {
   if (response.statusCode === 200) {
     console.log(response.body);
   }
