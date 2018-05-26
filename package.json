@@ -1,0 +1,17 @@
+{
+  "name": "proxycrawl",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/proxycrawl/proxycrawl-node.git"
+  },
+  "author": "ProxyCrawl",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/proxycrawl/proxycrawl-node",
+  "dependencies": {}
+}
