@@ -10,7 +10,18 @@
     "type": "git",
     "url": "git+ssh://git@github.com/proxycrawl/proxycrawl-node.git"
   },
-  "author": "ProxyCrawl",
+  "author": "ProxyCrawl <info@proxycrawl.com>",
+  "keywords": [
+    "scraping",
+    "crawling",
+    "scraper",
+    "scrape",
+    "crawler",
+    "proxycrawl"
+  ],
+  "bugs": {
+    "url": "https://github.com/proxycrawl/proxycrawl-node/issues"
+  },
   "license": "Apache-2.0",
   "homepage": "https://github.com/proxycrawl/proxycrawl-node",
   "dependencies": {}
