@@ -7,7 +7,7 @@ Dependency free module for scraping and crawling websites using [ProxyCrawl](htt
 Install using npm
 
 ```javascript
-npm i proxycrawl-node
+npm i proxycrawl
 ```
 
 Require the API class in your project
