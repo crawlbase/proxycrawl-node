@@ -5,6 +5,14 @@ const { defaults } = require('./config.js');
 
 const _APIURL_ = 'https://api.proxycrawl.com/';
 
+/**
+ * A node class that acts as wrapper for ProxyCrawl API.
+ *
+ * Read ProxyCrawl API documentation https://proxycrawl.com/dashboard/docs
+ *
+ * Copyright ProxyCrawl
+ * Licensed under the Apache License 2.0
+ */
 class ProxyCrawlAPI {
 
   constructor(options) {
