@@ -136,6 +136,10 @@ class ProxyCrawlAPI {
       url += '&page_wait=' + options.pageWait;
     }
 
+    if (undefined === URL) { // Fix for older node versions
+      const urlModule = require('url');
+      return urlModule.parse(url);
+    }
     return new URL(url);
   }
 
