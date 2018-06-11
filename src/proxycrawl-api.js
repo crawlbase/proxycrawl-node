@@ -1,5 +1,6 @@
 const https = require('https');
 const zlib = require('zlib');
+const querystring = require('querystring');
 const { URL } = require('url');
 const { defaults } = require('./config.js');
 
@@ -35,9 +36,7 @@ class ProxyCrawlAPI {
       data = JSON.stringify(data);
       options.postContentType = options.postContentType || 'application/json';
     } else if ('object' === typeof data) {
-      data = Object.keys(data).map((key) => Array.isArray(data[key])
-        ? data[key].map((value) => key + '=' + encodeURIComponent(value)).join('&')
-        : key + '=' + encodeURIComponent(data[key])).join('&');
+      data = querystring.stringify(data);
     }
     options.postData = data;
     return this.request(url, options);
