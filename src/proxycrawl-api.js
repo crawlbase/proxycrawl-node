@@ -71,8 +71,8 @@ class ProxyCrawlAPI {
   }
 
   processResponse(response) {
-    response.originalStatus = response.headers.original_status;
-    response.pcStatus = response.headers.pc_status;
+    response.originalStatus = response.headers.original_status * 1;
+    response.pcStatus = response.headers.pc_status * 1;
     response.url = response.headers.url;
 
     return new Promise((resolve, reject) => {
@@ -86,8 +86,8 @@ class ProxyCrawlAPI {
           response.body = buffer.join('');
           if (response.headers['content-type'].indexOf('json') > -1) {
             response.json = JSON.parse(response.body);
-            response.originalStatus = response.json.original_status;
-            response.pcStatus = response.json.pc_status;
+            response.originalStatus = response.json.original_status * 1;
+            response.pcStatus = response.json.pc_status * 1;
             response.url = response.json.url;
           }
           return resolve(response);
@@ -105,8 +105,8 @@ class ProxyCrawlAPI {
           response.body = rawData;
           if (response.headers['content-type'].indexOf('json') > -1) {
             response.json = JSON.parse(response.body);
-            response.originalStatus = response.json.original_status;
-            response.pcStatus = response.json.pc_status;
+            response.originalStatus = response.json.original_status * 1;
+            response.pcStatus = response.json.pc_status * 1;
             response.url = response.json.url;
           }
           return resolve(response);
