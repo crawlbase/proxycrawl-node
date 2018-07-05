@@ -18,7 +18,8 @@ const { ProxyCrawlAPI } = require('proxycrawl');
 
 ## Usage
 
-Initialize with one of your account tokens, either normal or javascript token. Then make get or post requests accordingly.
+Initialize with one of your account tokens, either normal or javascript token. Then make get or post requests accordingly.  
+You can get your ProxyCrawl free token [from here](https://proxycrawl.com/signup).
 
 ```javascript
 const api = new ProxyCrawlAPI({ token: 'YOUR_TOKEN' });
