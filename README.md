@@ -141,3 +141,7 @@ api.get('https://craiglist.com').then(response => {
 ```
 
 If you have questions or need help using the library, please open an issue or [contact us](https://proxycrawl.com/contact).
+
+---
+
+Copyright 2018 ProxyCrawl
