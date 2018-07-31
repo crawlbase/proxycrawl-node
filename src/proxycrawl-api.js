@@ -54,7 +54,7 @@ class ProxyCrawlAPI {
       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
       'Accept-Encoding': 'gzip,deflate'
     };
-    if ('POST' === options.method && '' !== options.postData) {
+    if (('POST' === options.method || 'PUT' === options.method) && '' !== options.postData) {
       headers['Content-Type'] = options.postContentType || defaults.postContentType;
       headers['Content-Length'] = Buffer.byteLength(options.postData);
     }
@@ -68,7 +68,7 @@ class ProxyCrawlAPI {
       const request = https.request(requestOptions, (response) => this.processResponse(response).then(resolve).catch(reject));
       request.setTimeout(this.options.timeout, () => request.destroy('Request timeout'));
       request.on('error', reject);
-      if ('POST' === options.method && '' !== options.postData) {
+      if (('POST' === options.method || 'PUT' === options.method) && '' !== options.postData) {
         request.write(options.postData);
       }
       request.end();
@@ -124,7 +124,7 @@ class ProxyCrawlAPI {
     url = encodeURIComponent(url);
     url = _APIURL_ + '?token=' + this.options.token + '&url=' + url;
 
-    if ('POST' === options.method && undefined !== options.postData && '' !== options.postData && undefined !== options.postContentType && options.postContentType !== defaults.postContentType) {
+    if (('POST' === options.method || 'PUT' === options.method) && undefined !== options.postData && '' !== options.postData && undefined !== options.postContentType && options.postContentType !== defaults.postContentType) {
       url += '&post_content_type=' + encodeURIComponent(options.postContentType);
     }
     if (undefined !== options.format && options.format !== defaults.format) {
