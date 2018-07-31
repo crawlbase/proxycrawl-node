@@ -31,7 +31,7 @@ class ProxyCrawlAPI {
   }
 
   post(url, data, options = {}) {
-    options.method = 'POST';
+    options.method = options.method || 'POST';
     if ('object' === typeof data && undefined !== options.postType && 'json' === options.postType) {
       data = JSON.stringify(data);
       options.postContentType = options.postContentType || 'application/json';
@@ -40,6 +40,11 @@ class ProxyCrawlAPI {
     }
     options.postData = data;
     return this.request(url, options);
+  }
+
+  put(url, data, options = {}) {
+    options.method = 'PUT';
+    return this.post(url, data, options);
   }
 
   request(url, options = {}) {
