@@ -29,6 +29,8 @@ normalAPI.post('http://httpbin.org/post', { hello: 'post' }).then(processTestRes
 
 normalAPI.post('http://httpbin.org/post', { hello: 'json' }, { postType: 'json' }).then(processTestResponse).catch(processTestError);
 
+normalAPI.put('http://httpbin.org/put', { hello: 'put' }).then(processTestResponse).catch(processTestError);
+
 const javascriptAPI = new ProxyCrawlAPI({ token: test.javascriptToken });
 
 javascriptAPI.get('http://httpbin.org/anything?hello=world').then(processTestResponse).catch(processTestError);
