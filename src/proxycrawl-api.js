@@ -76,6 +76,7 @@ class ProxyCrawlAPI {
   }
 
   processResponse(response) {
+    response.headers = this.lowerHeaders(response.headers);
     response.originalStatus = response.headers.original_status * 1;
     response.pcStatus = response.headers.pc_status * 1;
     response.url = response.headers.url;
@@ -148,6 +149,14 @@ class ProxyCrawlAPI {
       return urlModule.parse(url);
     }
     return new URL(url);
+  }
+
+  lowerHeaders(headers) {
+    const result = {};
+    for (const [key, value] of Object.entries(headers)) {
+      result[key.toLowerCase()] = value;
+    }
+    return result;
   }
 
 }
