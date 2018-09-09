@@ -90,7 +90,7 @@ class ProxyCrawlAPI {
         pipe.on('data', (data) => buffer.push(data.toString()));
         pipe.on('end', () => {
           response.body = buffer.join('');
-          if (response.headers['content-type'].indexOf('json') > -1) {
+          if (response.headers['content-type'] && response.headers['content-type'].indexOf('json') > -1) {
             response.json = JSON.parse(response.body);
             response.originalStatus = response.json.original_status * 1;
             response.pcStatus = response.json.pc_status * 1;
@@ -109,7 +109,7 @@ class ProxyCrawlAPI {
         response.on('data', (chunk) => rawData += chunk);
         response.on('end', () => {
           response.body = rawData;
-          if (response.headers['content-type'].indexOf('json') > -1) {
+          if (response.headers['content-type'] && response.headers['content-type'].indexOf('json') > -1) {
             response.json = JSON.parse(response.body);
             response.originalStatus = response.json.original_status * 1;
             response.pcStatus = response.json.pc_status * 1;
