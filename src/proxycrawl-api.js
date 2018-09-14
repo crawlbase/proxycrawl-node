@@ -3,6 +3,7 @@ const zlib = require('zlib');
 const querystring = require('querystring');
 const { URL } = require('url');
 const { defaults } = require('./config.js');
+const { snakeCase } = require('./utils.js');
 
 const _APIURL_ = 'https://api.proxycrawl.com/';
 
@@ -125,23 +126,11 @@ class ProxyCrawlAPI {
     url = encodeURIComponent(url);
     url = _APIURL_ + '?token=' + this.options.token + '&url=' + url;
 
-    if (('POST' === options.method || 'PUT' === options.method) && undefined !== options.postData && '' !== options.postData && undefined !== options.postContentType && options.postContentType !== defaults.postContentType) {
-      url += '&post_content_type=' + encodeURIComponent(options.postContentType);
-    }
-    if (undefined !== options.format && options.format !== defaults.format) {
-      url += '&format=' + options.format;
-    }
-    if (undefined !== options.userAgent) {
-      url += '&user_agent=' + encodeURIComponent(options.userAgent);
-    }
-    if (undefined !== options.device) {
-      url += '&device=' + options.device;
-    }
-    if (undefined !== options.pageWait) {
-      url += '&page_wait=' + options.pageWait;
-    }
-    if (undefined !== options.ajaxWait) {
-      url += '&ajax_wait=' + options.ajaxWait;
+    for (const [key, value] of Object.entries(options)) {
+      if ('method' === key) {
+        continue;
+      }
+      url += '&' + snakeCase(key) + '=' + encodeURIComponent(value);
     }
 
     if (undefined === URL) { // Fix for older node versions

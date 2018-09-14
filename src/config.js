@@ -1,8 +1,7 @@
 const config = {
   defaults: {
     timeout: 30000,
-    postContentType: 'application/x-www-form-urlencoded',
-    format: 'html'
+    postContentType: 'application/x-www-form-urlencoded'
   },
   test: {
     normalToken: '',
