@@ -3,7 +3,7 @@ const zlib = require('zlib');
 const querystring = require('querystring');
 const { URL } = require('url');
 const { defaults } = require('./config.js');
-const { snakeCase } = require('./utils.js');
+const { snakeCase, lowerHeaders } = require('./utils.js');
 
 const _APIURL_ = 'https://api.proxycrawl.com/';
 
@@ -77,7 +77,7 @@ class ProxyCrawlAPI {
   }
 
   processResponse(response) {
-    response.headers = this.lowerHeaders(response.headers);
+    response.headers = lowerHeaders(response.headers);
     response.originalStatus = response.headers.original_status * 1;
     response.pcStatus = response.headers.pc_status * 1;
     response.url = response.headers.url;
@@ -138,14 +138,6 @@ class ProxyCrawlAPI {
       return urlModule.parse(url);
     }
     return new URL(url);
-  }
-
-  lowerHeaders(headers) {
-    const result = {};
-    for (const [key, value] of Object.entries(headers)) {
-      result[key.toLowerCase()] = value;
-    }
-    return result;
   }
 
 }
