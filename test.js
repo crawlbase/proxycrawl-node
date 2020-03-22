@@ -1,6 +1,6 @@
 // These are not proper unit tests, they are just to see some examples and play around.
 
-const { CrawlingAPI } = require('./index.js');
+const { CrawlingAPI, LeadsAPI } = require('./index.js');
 const { test } = require('./src/config.js');
 
 if (test.normalToken === '' || test.javascriptToken === '') {
@@ -36,3 +36,7 @@ normalAPI.put('http://httpbin.org/put', { hello: 'put' }).then(processTestRespon
 const javascriptAPI = new CrawlingAPI({ token: test.javascriptToken });
 
 javascriptAPI.get('http://httpbin.org/anything?hello=world').then(processTestResponse).catch(processTestError);
+
+const leadsAPI = new LeadsAPI({ token: test.normalToken });
+
+leadsAPI.getFromDomain('httpbin.org').then(processTestResponse).catch(processTestError);
