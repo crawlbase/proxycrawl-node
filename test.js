@@ -1,3 +1,5 @@
+// These are not proper unit tests, they are just to see some examples and play around.
+
 const { ProxyCrawlAPI } = require('./index.js');
 const { test } = require('./src/config.js');
 
