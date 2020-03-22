@@ -10,7 +10,8 @@ Install using npm
 npm i proxycrawl
 ```
 
-Require the necessary API class in your project.
+Require the necessary API class in your project.  
+You can get your ProxyCrawl free token [from here](https://proxycrawl.com/signup).
 
 ```javascript
 const { CrawlingAPI, LeadsAPI } = require('proxycrawl');
@@ -18,8 +19,7 @@ const { CrawlingAPI, LeadsAPI } = require('proxycrawl');
 
 ## Crawling API Usage
 
-Initialize with one of your account tokens, either normal or javascript token. Then make get or post requests accordingly.  
-You can get your ProxyCrawl free token [from here](https://proxycrawl.com/signup).
+Initialize with one of your account tokens, either normal or javascript token. Then make get or post requests accordingly.
 
 ```javascript
 const api = new CrawlingAPI({ token: 'YOUR_TOKEN' });
@@ -142,8 +142,7 @@ api.get('https://craiglist.com').then(response => {
 
 ## Leads API Usage
 
-Initialize with your Leads API token and call the `getFromDomain` method.  
-You can get your ProxyCrawl free token [from here](https://proxycrawl.com/signup).
+Initialize with your Leads API token and call the `getFromDomain` method.
 
 ```javascript
 const api = new LeadsAPI({ token: 'YOUR_TOKEN' });

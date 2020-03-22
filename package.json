@@ -20,7 +20,9 @@
     "proxycrawl",
     "scraping-websites",
     "scraping-framework",
-    "proxycrawl-api"
+    "proxycrawl-api",
+    "leads",
+    "leads-api"
   ],
   "bugs": {
     "url": "https://github.com/proxycrawl/proxycrawl-node/issues"
