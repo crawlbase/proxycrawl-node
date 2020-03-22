@@ -10,10 +10,10 @@ Install using npm
 npm i proxycrawl
 ```
 
-Require the necessary API class in your project. Example for the Crawling API:
+Require the necessary API class in your project.
 
 ```javascript
-const { CrawlingAPI } = require('proxycrawl');
+const { CrawlingAPI, LeadsAPI } = require('proxycrawl');
 ```
 
 ## Crawling API Usage
@@ -130,7 +130,7 @@ api.get('https://www.freelancer.com', { pageWait: 5000 }).then(response => {
 }).catch(error => console.error);
 ```
 
-## Original status
+### Original status and PC status
 
 You can always get the original status and proxycrawl status from the response. Read the [ProxyCrawl documentation](https://proxycrawl.com/dashboard/docs) to learn more about those status.
 
@@ -138,6 +138,19 @@ You can always get the original status and proxycrawl status from the response. 
 api.get('https://craiglist.com').then(response => {
   console.log(response.originalStatus, response.pcStatus);
 }).catch(error => console.error);
+```
+
+## Leads API Usage
+
+Initialize with your Leads API token and call the `getFromDomain` method.  
+You can get your ProxyCrawl free token [from here](https://proxycrawl.com/signup).
+
+```javascript
+const api = new LeadsAPI({ token: 'YOUR_TOKEN' });
+
+api.getFromDomain('somesite.com').then(response => {
+  console.log(response.leads);
+});
 ```
 
 If you have questions or need help using the library, please open an issue or [contact us](https://proxycrawl.com/contact).

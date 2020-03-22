@@ -35,7 +35,7 @@ class BaseAPI {
       headers['Content-Length'] = Buffer.byteLength(options.postData);
     }
     const requestOptions = {
-      method: options.method,
+      method: options.method || 'GET',
       host: url.host,
       path: url.pathname + url.search,
       headers
@@ -53,8 +53,6 @@ class BaseAPI {
 
   processResponse(response) {
     response.headers = lowerHeaders(response.headers);
-    response.originalStatus = response.headers.original_status * 1;
-    response.pcStatus = response.headers.pc_status * 1;
     response.url = response.headers.url;
 
     return new Promise((resolve, reject) => {
@@ -68,8 +66,6 @@ class BaseAPI {
           response.body = buffer.join('');
           if (response.headers['content-type'] && response.headers['content-type'].indexOf('json') > -1) {
             response.json = JSON.parse(response.body);
-            response.originalStatus = response.json.original_status * 1;
-            response.pcStatus = response.json.pc_status * 1;
             response.url = response.json.url;
           }
           return resolve(response);
@@ -87,8 +83,6 @@ class BaseAPI {
           response.body = rawData;
           if (response.headers['content-type'] && response.headers['content-type'].indexOf('json') > -1) {
             response.json = JSON.parse(response.body);
-            response.originalStatus = response.json.original_status * 1;
-            response.pcStatus = response.json.pc_status * 1;
             response.url = response.json.url;
           }
           return resolve(response);

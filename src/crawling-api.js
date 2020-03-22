@@ -13,7 +13,6 @@ class CrawlingAPI extends BaseAPI {
 
   get(url, options = {}) {
     options.url = url;
-    options.method = 'GET';
     return this.request('', options);
   }
 
@@ -34,6 +33,20 @@ class CrawlingAPI extends BaseAPI {
     options.url = url;
     options.method = 'PUT';
     return this.post(url, data, options);
+  }
+
+  processResponse(response) {
+    return super.processResponse(response)
+      .then(response => {
+        if (undefined !== response.headers.original_status) {
+          response.originalStatus = response.headers.original_status * 1;
+          response.pcStatus = response.headers.pc_status * 1;
+        } else {
+          response.originalStatus = response.json.original_status * 1;
+          response.pcStatus = response.json.pc_status * 1;
+        }
+        return response;
+      });
   }
 
 }
