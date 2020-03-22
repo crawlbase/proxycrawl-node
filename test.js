@@ -1,6 +1,6 @@
 // These are not proper unit tests, they are just to see some examples and play around.
 
-const { ProxyCrawlAPI } = require('./index.js');
+const { CrawlingAPI } = require('./index.js');
 const { test } = require('./src/config.js');
 
 if (test.normalToken === '' || test.javascriptToken === '') {
@@ -23,7 +23,7 @@ function processTestError(error) {
   process.exit(1);
 }
 
-const normalAPI = new ProxyCrawlAPI({ token: test.normalToken });
+const normalAPI = new CrawlingAPI({ token: test.normalToken });
 
 normalAPI.get('http://httpbin.org/anything?hello=world').then(processTestResponse).catch(processTestError);
 
@@ -33,6 +33,6 @@ normalAPI.post('http://httpbin.org/post', { hello: 'json' }, { postType: 'json' 
 
 normalAPI.put('http://httpbin.org/put', { hello: 'put' }).then(processTestResponse).catch(processTestError);
 
-const javascriptAPI = new ProxyCrawlAPI({ token: test.javascriptToken });
+const javascriptAPI = new CrawlingAPI({ token: test.javascriptToken });
 
 javascriptAPI.get('http://httpbin.org/anything?hello=world').then(processTestResponse).catch(processTestError);

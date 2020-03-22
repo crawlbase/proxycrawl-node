@@ -10,19 +10,19 @@ Install using npm
 npm i proxycrawl
 ```
 
-Require the API class in your project
+Require the necessary API class in your project. Example for the Crawling API:
 
 ```javascript
-const { ProxyCrawlAPI } = require('proxycrawl');
+const { CrawlingAPI } = require('proxycrawl');
 ```
 
-## Usage
+## Crawling API Usage
 
 Initialize with one of your account tokens, either normal or javascript token. Then make get or post requests accordingly.  
 You can get your ProxyCrawl free token [from here](https://proxycrawl.com/signup).
 
 ```javascript
-const api = new ProxyCrawlAPI({ token: 'YOUR_TOKEN' });
+const api = new CrawlingAPI({ token: 'YOUR_TOKEN' });
 ```
 
 ### GET requests
@@ -109,7 +109,7 @@ api.put('https://producthunt.com/search', { text: 'example search' }).then(respo
 If you need to scrape any website built with Javascript like React, Angular, Vue, etc. You just need to pass your javascript token and use the same calls. Note that only `.get` is available for javascript and not `.post`.
 
 ```javascript
-const api = new ProxyCrawlAPI({ token: 'YOUR_JAVASCRIPT_TOKEN' });
+const api = new CrawlingAPI({ token: 'YOUR_JAVASCRIPT_TOKEN' });
 ```
 
 ```javascript

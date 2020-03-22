@@ -8,14 +8,14 @@ const { snakeCase, lowerHeaders } = require('./utils.js');
 const _APIURL_ = 'https://api.proxycrawl.com/';
 
 /**
- * A node class that acts as wrapper for ProxyCrawl API.
+ * A node class that acts as wrapper for ProxyCrawl Crawling API.
  *
- * Read ProxyCrawl API documentation https://proxycrawl.com/dashboard/docs
+ * Read ProxyCrawl Crawling API documentation https://proxycrawl.com/dashboard/api/docs
  *
  * Copyright ProxyCrawl
  * Licensed under the Apache License 2.0
  */
-class ProxyCrawlAPI {
+class CrawlingAPI {
 
   constructor(options) {
     if (undefined === options.token || '' === options.token) {
@@ -142,4 +142,4 @@ class ProxyCrawlAPI {
 
 }
 
-module.exports = ProxyCrawlAPI;
+module.exports = CrawlingAPI;

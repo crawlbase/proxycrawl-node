@@ -1,5 +1,6 @@
-const ProxyCrawlAPI = require('./src/proxycrawl-api.js');
+const CrawlingAPI = require('./src/crawling-api.js');
 
 module.exports = {
-  ProxyCrawlAPI
+  CrawlingAPI,
+  ProxyCrawlAPI: CrawlingAPI, // This one is here for backward compatibility reasons
 };
