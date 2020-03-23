@@ -38,10 +38,10 @@ class CrawlingAPI extends BaseAPI {
   processResponse(response) {
     return super.processResponse(response)
       .then(response => {
-        if (undefined !== response.headers.original_status) {
+        if (undefined !== response.headers && undefined !== response.headers.original_status) {
           response.originalStatus = response.headers.original_status * 1;
           response.pcStatus = response.headers.pc_status * 1;
-        } else {
+        } else if (undefined !== response.json) {
           response.originalStatus = response.json.original_status * 1;
           response.pcStatus = response.json.pc_status * 1;
         }
