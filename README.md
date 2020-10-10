@@ -14,10 +14,10 @@ Require the necessary API class in your project.
 You can get your ProxyCrawl free token [from here](https://proxycrawl.com/signup).
 
 ```javascript
-const { CrawlingAPI, LeadsAPI } = require('proxycrawl');
+const { CrawlingAPI, ScraperAPI, LeadsAPI } = require('proxycrawl');
 ```
 
-## Crawling API Usage
+## Crawling API usage
 
 Initialize with one of your account tokens, either normal or javascript token. Then make get or post requests accordingly.
 
@@ -140,7 +140,22 @@ api.get('https://craiglist.com').then(response => {
 }).catch(error => console.error);
 ```
 
-## Leads API Usage
+## Scraper API usage
+
+Initialize the Scraper API and use it in the same way as the Crawling API (see above). Use it with your normal token.  
+The same methods `get`, `post`, `put` as the Crawling API are available to use.
+
+```javascript
+const api = new ScraperAPI({ token: 'YOUR_TOKEN' });
+
+api.get('https://www.amazon.com/Halo-SleepSack-Swaddle-Triangle-Neutral/dp/B01LAG1TOS').then(response => {
+  if (response.statusCode === 200) {
+    console.log(response.json);
+  }
+}).catch(error => console.error);
+```
+
+## Leads API usage
 
 Initialize with your Leads API token and call the `getFromDomain` method.
 
