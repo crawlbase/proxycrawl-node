@@ -4,7 +4,7 @@ const BaseAPI = require('./base-api.js');
 /**
  * A node class that acts as wrapper for ProxyCrawl Crawling API.
  *
- * Read ProxyCrawl Crawling API documentation https://proxycrawl.com/dashboard/api/docs
+ * Read ProxyCrawl Crawling API documentation https://proxycrawl.com/docs/crawling-api
  *
  * Copyright ProxyCrawl
  * Licensed under the Apache License 2.0
