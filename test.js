@@ -25,17 +25,17 @@ function processTestError(error) {
 
 const normalAPI = new CrawlingAPI({ token: test.normalToken });
 
-normalAPI.get('http://httpbin.org/anything?hello=world').then(processTestResponse).catch(processTestError);
+normalAPI.get('https://httpbin.org/anything?hello=world').then(processTestResponse).catch(processTestError);
 
-normalAPI.post('http://httpbin.org/post', { hello: 'post' }).then(processTestResponse).catch(processTestError);
+normalAPI.post('https://httpbin.org/post', { hello: 'post' }).then(processTestResponse).catch(processTestError);
 
-normalAPI.post('http://httpbin.org/post', { hello: 'json' }, { postType: 'json' }).then(processTestResponse).catch(processTestError);
+normalAPI.post('https://httpbin.org/post', { hello: 'json' }, { postType: 'json' }).then(processTestResponse).catch(processTestError);
 
-normalAPI.put('http://httpbin.org/put', { hello: 'put' }).then(processTestResponse).catch(processTestError);
+normalAPI.put('https://httpbin.org/put', { hello: 'put' }).then(processTestResponse).catch(processTestError);
 
 const javascriptAPI = new CrawlingAPI({ token: test.javascriptToken });
 
-javascriptAPI.get('http://httpbin.org/anything?hello=world').then(processTestResponse).catch(processTestError);
+javascriptAPI.get('https://httpbin.org/anything?hello=world').then(processTestResponse).catch(processTestError);
 
 const leadsAPI = new LeadsAPI({ token: test.normalToken });
 
