@@ -13,7 +13,7 @@ class CrawlingAPI extends BaseAPI {
 
   get(url, options = {}) {
     options.url = url;
-    return this.request('', options);
+    return this.request(this.basePath, options);
   }
 
   post(url, data, options = {}) {
@@ -26,7 +26,7 @@ class CrawlingAPI extends BaseAPI {
       data = querystring.stringify(data);
     }
     options.postData = data;
-    return this.request('', options);
+    return this.request(this.basePath, options);
   }
 
   put(url, data, options = {}) {

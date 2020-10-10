@@ -14,6 +14,10 @@ const _APIURL_ = 'https://api.proxycrawl.com/';
  */
 class BaseAPI {
 
+  get basePath() {
+    return '';
+  }
+
   constructor(options) {
     if (undefined === options.token || '' === options.token) {
       throw new Error('Token is required to use the API, please pass token option');
