@@ -142,8 +142,7 @@ api.get('https://craiglist.com').then(response => {
 
 ## Scraper API usage
 
-Initialize the Scraper API and use it in the same way as the Crawling API (see above). Use it with your normal token.  
-The same methods `get`, `post`, `put` as the Crawling API are available to use.
+Initialize the Scraper API and use it in the same way as the Crawling API (see above). Use it with your normal token.
 
 ```javascript
 const api = new ScraperAPI({ token: 'YOUR_TOKEN' });
