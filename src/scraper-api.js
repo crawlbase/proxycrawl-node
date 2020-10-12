@@ -14,6 +14,14 @@ class ScraperAPI extends CrawlingAPI {
     return 'scraper';
   }
 
+  post() {
+    throw Error('Only GET is allowed for the ScraperAPI');
+  }
+
+  put() {
+    throw Error('Only GET is allowed for the ScraperAPI');
+  }
+
 }
 
 module.exports = ScraperAPI;
