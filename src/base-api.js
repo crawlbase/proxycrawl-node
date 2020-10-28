@@ -18,12 +18,12 @@ class BaseAPI {
     return '';
   }
 
-  constructor(options) {
+  constructor(options = {}) {
     if (undefined === options.token || '' === options.token) {
       throw new Error('Token is required to use the API, please pass token option');
     }
 
-    this.options = options;
+    this.options = Object.assign({}, options);
     this.options.timeout = this.options.timeout || defaults.timeout;
   }
 
