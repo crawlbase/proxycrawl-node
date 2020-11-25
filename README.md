@@ -11,7 +11,7 @@ npm i proxycrawl
 ```
 
 Require the necessary API class in your project.  
-You can get your ProxyCrawl free token [from here](https://proxycrawl.com/signup).
+You can get your [ProxyCrawl free token from here](https://proxycrawl.com/signup).
 
 ```javascript
 const { CrawlingAPI, ScraperAPI, LeadsAPI } = require('proxycrawl');
