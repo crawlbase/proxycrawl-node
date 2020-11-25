@@ -9,7 +9,6 @@ const CrawlingAPI = require('./crawling-api.js');
  * Licensed under the Apache License 2.0
  */
 class ScraperAPI extends CrawlingAPI {
-
   get basePath() {
     return 'scraper';
   }
@@ -21,7 +20,6 @@ class ScraperAPI extends CrawlingAPI {
   put() {
     throw Error('Only GET is allowed for the ScraperAPI');
   }
-
 }
 
 module.exports = ScraperAPI;

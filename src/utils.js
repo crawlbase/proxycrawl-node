@@ -12,5 +12,5 @@ function lowerHeaders(headers) {
 
 module.exports = {
   snakeCase,
-  lowerHeaders
+  lowerHeaders,
 };

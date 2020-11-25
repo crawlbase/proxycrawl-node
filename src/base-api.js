@@ -13,7 +13,6 @@ const _APIURL_ = 'https://api.proxycrawl.com/';
  * Licensed under the Apache License 2.0
  */
 class BaseAPI {
-
   get basePath() {
     return '';
   }
@@ -31,8 +30,8 @@ class BaseAPI {
     const url = this.buildURL(path, options);
 
     const headers = {
-      'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-      'Accept-Encoding': 'gzip,deflate'
+      Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+      'Accept-Encoding': 'gzip,deflate',
     };
     if (('POST' === options.method || 'PUT' === options.method) && '' !== options.postData) {
       headers['Content-Type'] = options.postContentType || defaults.postContentType;
@@ -42,10 +41,12 @@ class BaseAPI {
       method: options.method || 'GET',
       host: url.host,
       path: url.pathname + url.search,
-      headers
+      headers,
     };
     return new Promise((resolve, reject) => {
-      const request = https.request(requestOptions, (response) => this.processResponse(response).then(resolve).catch(reject));
+      const request = https.request(requestOptions, (response) =>
+        this.processResponse(response).then(resolve).catch(reject)
+      );
       request.setTimeout(this.options.timeout, () => request.destroy('Request timeout'));
       request.on('error', reject);
       if (('POST' === options.method || 'PUT' === options.method) && '' !== options.postData) {
@@ -82,7 +83,7 @@ class BaseAPI {
       } else {
         let rawData = '';
         response.setEncoding('utf8');
-        response.on('data', (chunk) => rawData += chunk);
+        response.on('data', (chunk) => (rawData += chunk));
         response.on('end', () => {
           response.body = rawData;
           if (response.headers['content-type'] && response.headers['content-type'].indexOf('json') > -1) {
@@ -105,13 +106,13 @@ class BaseAPI {
       url += '&' + snakeCase(key) + '=' + encodeURIComponent(value);
     }
 
-    if (undefined === URL) { // Fix for older node versions
+    // Fix for older node versions
+    if (undefined === URL) {
       const urlModule = require('url');
       return urlModule.parse(url);
     }
     return new URL(url);
   }
-
 }
 
 module.exports = BaseAPI;

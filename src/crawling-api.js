@@ -10,7 +10,6 @@ const BaseAPI = require('./base-api.js');
  * Licensed under the Apache License 2.0
  */
 class CrawlingAPI extends BaseAPI {
-
   get(url, options = {}) {
     options.url = url;
     return this.request(this.basePath, options);
@@ -36,19 +35,17 @@ class CrawlingAPI extends BaseAPI {
   }
 
   processResponse(response) {
-    return super.processResponse(response)
-      .then(response => {
-        if (undefined !== response.headers && undefined !== response.headers.original_status) {
-          response.originalStatus = response.headers.original_status * 1;
-          response.pcStatus = response.headers.pc_status * 1;
-        } else if (undefined !== response.json) {
-          response.originalStatus = response.json.original_status * 1;
-          response.pcStatus = response.json.pc_status * 1;
-        }
-        return response;
-      });
+    return super.processResponse(response).then((response) => {
+      if (undefined !== response.headers && undefined !== response.headers.original_status) {
+        response.originalStatus = response.headers.original_status * 1;
+        response.pcStatus = response.headers.pc_status * 1;
+      } else if (undefined !== response.json) {
+        response.originalStatus = response.json.original_status * 1;
+        response.pcStatus = response.json.pc_status * 1;
+      }
+      return response;
+    });
   }
-
 }
 
 module.exports = CrawlingAPI;
