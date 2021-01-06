@@ -14,7 +14,7 @@ Require the necessary API class in your project.
 You can get your [ProxyCrawl free token from here](https://proxycrawl.com/signup).
 
 ```javascript
-const { CrawlingAPI, ScraperAPI, LeadsAPI } = require('proxycrawl');
+const { CrawlingAPI, ScraperAPI, LeadsAPI, ScreenshotsAPI } = require('proxycrawl');
 ```
 
 ## Crawling API usage
@@ -163,6 +163,25 @@ const api = new LeadsAPI({ token: 'YOUR_TOKEN' });
 
 api.getFromDomain('somesite.com').then(response => {
   console.log(response.leads);
+});
+```
+
+## Screenshots API usage
+
+Initialize with your Screenshots API token and call the `get` method, then do whatever you need with the binary content. For example save it in a file.
+
+You can pass any of the [available parameters](https://proxycrawl.com/docs/screenshots-api/parameters/)
+
+```javascript
+const api = new ScreenshotsAPI({ token: 'YOUR_TOKEN' });
+
+api.get('https://www.amazon.com').then(response => {
+  fs.writeFileSync('amazon.jpg', response.body, { encoding: 'binary' });
+});
+
+// Example with parameters
+api.get('https://www.amazon.com', { device: 'mobile' }).then(response => {
+  fs.writeFileSync('amazon-mobile.jpg', response.body, { encoding: 'binary' });
 });
 ```
 

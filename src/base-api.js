@@ -17,6 +17,10 @@ class BaseAPI {
     return '';
   }
 
+  get responseEncoding() {
+    return 'utf8';
+  }
+
   constructor(options = {}) {
     if (undefined === options.token || '' === options.token) {
       throw new Error('Token is required to use the API, please pass token option');
@@ -66,7 +70,7 @@ class BaseAPI {
         const pipe = zlib[encoding === 'gzip' ? 'createGunzip' : 'createInflate']();
         const buffer = [];
         response.pipe(pipe);
-        pipe.on('data', (data) => buffer.push(data.toString()));
+        pipe.on('data', (data) => buffer.push(data.toString(this.responseEncoding)));
         pipe.on('end', () => {
           response.body = buffer.join('');
           if (response.headers['content-type'] && response.headers['content-type'].indexOf('json') > -1) {

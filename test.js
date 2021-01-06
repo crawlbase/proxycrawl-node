@@ -1,6 +1,7 @@
 // These are not proper unit tests, they are just to see some examples and play around.
 
-const { CrawlingAPI, ScraperAPI, LeadsAPI } = require('./index.js');
+const fs = require('fs');
+const { CrawlingAPI, ScraperAPI, LeadsAPI, ScreenshotsAPI } = require('./index.js');
 const { test } = require('./src/config.js');
 
 if (test.normalToken === '' || test.javascriptToken === '') {
@@ -15,6 +16,16 @@ function processTestResponse(response) {
     } else {
       console.log(response.body);
     }
+    console.log('Test passed');
+  } else {
+    console.error('Test failed, expected statusCode 200 got ' + response.statusCode);
+    process.exit(1);
+  }
+}
+
+function processScreenshotTestResponse(response) {
+  if (response.statusCode === 200) {
+    fs.writeFileSync('test.jpg', response.body, { encoding: 'binary' });
     console.log('Test passed');
   } else {
     console.error('Test failed, expected statusCode 200 got ' + response.statusCode);
@@ -48,3 +59,7 @@ scraperAPI.get('https://www.amazon.com/Halo-SleepSack-Swaddle-Triangle-Neutral/d
 const leadsAPI = new LeadsAPI({ token: test.normalToken });
 
 leadsAPI.getFromDomain('httpbin.org').then(processTestResponse).catch(processTestError);
+
+const screenshotsAPI = new ScreenshotsAPI({ token: test.normalToken });
+
+screenshotsAPI.get('https://www.amazon.com').then(processScreenshotTestResponse).catch(processTestError);
