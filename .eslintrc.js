@@ -3,7 +3,7 @@ module.exports = {
     node: true,
     es6: true,
   },
-  extends: 'eslint:recommended',
+  extends: ['eslint:recommended', 'prettier'],
   parserOptions: {
     ecmaVersion: 8,
     sourceType: 'module',
@@ -12,7 +12,6 @@ module.exports = {
     'no-useless-escape': 0,
     'no-console': 0,
     'linebreak-style': ['error', 'unix'],
-    quotes: ['error', 'single'],
     semi: ['error', 'always'],
   },
   globals: {},

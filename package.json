@@ -29,5 +29,18 @@
   },
   "license": "Apache-2.0",
   "homepage": "https://github.com/proxycrawl/proxycrawl-node",
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "eslint": "^7.18.0",
+    "eslint-config-prettier": "^7.2.0",
+    "husky": "^4.3.8",
+    "prettier": "^2.2.1"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  }
 }
