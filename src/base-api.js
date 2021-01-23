@@ -4,6 +4,10 @@ const { URL } = require('url');
 const { defaults } = require('./config.js');
 const { snakeCase, lowerHeaders } = require('./utils.js');
 
+/**
+ * The API base url.
+ * @constant
+ */
 const _APIURL_ = 'https://api.proxycrawl.com/';
 
 /**
@@ -13,16 +17,33 @@ const _APIURL_ = 'https://api.proxycrawl.com/';
  * Licensed under the Apache License 2.0
  */
 class BaseAPI {
+  /**
+   * Returns the base path to use on the API calls. This is used internally in the class.
+   * @type string
+   * @private
+   */
   get basePath() {
     return '';
   }
 
+  /**
+   * The encoding use to decode the API responses. This is used internally in the class.
+   * @type string
+   * @default utf8
+   * @private
+   */
   get responseEncoding() {
     return 'utf8';
   }
 
-  constructor(options = {}) {
-    if (undefined === options.token || '' === options.token) {
+  /**
+   * Creates a BaseAPI object. This class is not meant to be used directly but extended from subclasses.
+   * @param {object} options The options to initialize the API.
+   * @param {string} options.token The token to use in the API.
+   * @param {number} [options.timeout=30000] The API timeout in milliseconds.
+   */
+  constructor(options) {
+    if (undefined === options || undefined === options.token || '' === options.token) {
       throw new Error('Token is required to use the API, please pass token option');
     }
 
@@ -30,6 +51,12 @@ class BaseAPI {
     this.options.timeout = this.options.timeout || defaults.timeout;
   }
 
+  /**
+   * Makes a request to ProxyCrawl API.
+   * @param {string} path Path from the API to load.
+   * @param {object} [options={}] Additional options for the request.
+   * @returns {Promise}
+   */
   request(path, options = {}) {
     const url = this.buildURL(path, options);
 
@@ -60,6 +87,12 @@ class BaseAPI {
     });
   }
 
+  /**
+   * Decompresses and processes the response from the API.
+   * @param {object} response The HTTP response object.
+   * @returns {Promise}
+   * @private
+   */
   processResponse(response) {
     response.headers = lowerHeaders(response.headers);
     response.url = response.headers.url;
@@ -100,6 +133,12 @@ class BaseAPI {
     });
   }
 
+  /**
+   * Builds the url to call the API.
+   * @param {string} path Path of the API to call.
+   * @param {object} options Additional parameters to pass.
+   * @returns {URL}
+   */
   buildURL(path, options) {
     let url = _APIURL_ + path + '?token=' + this.options.token;
 
