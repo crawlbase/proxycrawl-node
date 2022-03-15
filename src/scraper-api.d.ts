@@ -8,9 +8,15 @@ export = ScraperAPI;
  * Licensed under the Apache License 2.0
  */
 declare class ScraperAPI extends CrawlingAPI {
-    constructor(options: {
-        token: string;
-        timeout?: number;
-    });
+    /**
+     * POST is not allowed.
+     * @throws {Error}
+     */
+    post(): void;
+    /**
+     * PUT is not allowed.
+     * @throws {Error}
+     */
+    put(): void;
 }
 import CrawlingAPI = require("./crawling-api.js");

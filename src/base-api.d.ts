@@ -1,3 +1,4 @@
+/// <reference types="node" />
 export = BaseAPI;
 /**
  * The BaseAPI class which does the calls to the ProxyCrawlAPI itself.
@@ -14,7 +15,7 @@ declare class BaseAPI {
      */
     constructor(options: {
         token: string;
-        timeout: number;
+        timeout?: number;
     });
     /**
      * Returns the base path to use on the API calls. This is used internally in the class.
@@ -29,7 +30,10 @@ declare class BaseAPI {
      * @private
      */
     private get responseEncoding();
-    options: any;
+    options: {
+        token: string;
+        timeout?: number;
+    };
     /**
      * Makes a request to ProxyCrawl API.
      * @param {string} path Path from the API to load.
@@ -50,5 +54,6 @@ declare class BaseAPI {
      * @param {object} options Additional parameters to pass.
      * @returns {URL}
      */
-    buildURL(path: string, options: object): any;
+    buildURL(path: string, options: object): URL;
 }
+import { URL } from "url";

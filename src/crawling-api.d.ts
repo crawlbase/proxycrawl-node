@@ -8,10 +8,6 @@ export = CrawlingAPI;
  * Licensed under the Apache License 2.0
  */
 declare class CrawlingAPI extends BaseAPI {
-    constructor(options: {
-        token: string;
-        timeout?: number;
-    });
     /**
      * Makes a GET request to the Crawling API.
      * @param {string} url The url to load.
@@ -28,7 +24,7 @@ declare class CrawlingAPI extends BaseAPI {
      * @returns {Promise}
      */
     post(url: string, data: (object | string), options?: {
-        postType: string;
+        postType?: string;
     }): Promise<any>;
     /**
      * Makes a PUT request to the Crawling API.
@@ -39,7 +35,7 @@ declare class CrawlingAPI extends BaseAPI {
      * @returns {Promise}
      */
     put(url: string, data: (object | string), options?: {
-        postType: string;
+        postType?: string;
     }): Promise<any>;
 }
 import BaseAPI = require("./base-api.js");

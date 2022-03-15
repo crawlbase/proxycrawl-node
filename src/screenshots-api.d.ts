@@ -8,10 +8,6 @@ export = ScreenshotsAPI;
  * Licensed under the Apache License 2.0
  */
 declare class ScreenshotsAPI extends BaseAPI {
-    constructor(options: {
-        token: string;
-        timeout?: number;
-    });
     /**
      * Gets a screenshot from the ProxyCrawl Screenshots API.
      * @param {string} url URL from the website to take a screenshot.

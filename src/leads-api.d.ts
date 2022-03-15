@@ -8,10 +8,6 @@ export = LeadsAPI;
  * Licensed under the Apache License 2.0
  */
 declare class LeadsAPI extends BaseAPI {
-    constructor(options: {
-        token: string;
-        timeout?: number;
-    });
     /**
      * Get leads from a specific domain.
      * @param {string} domain The domain to find leads from.
