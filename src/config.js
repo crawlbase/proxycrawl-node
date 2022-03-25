@@ -4,7 +4,7 @@
  */
 const config = {
   defaults: {
-    timeout: 30000,
+    timeout: 90000,
     postContentType: 'application/x-www-form-urlencoded',
   },
   test: {

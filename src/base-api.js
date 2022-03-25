@@ -40,7 +40,7 @@ class BaseAPI {
    * Creates a BaseAPI object. This class is not meant to be used directly but extended from subclasses.
    * @param {object} options The options to initialize the API.
    * @param {string} options.token The token to use in the API.
-   * @param {number} [options.timeout=30000] The API timeout in milliseconds.
+   * @param {number} [options.timeout=90000] The API timeout in milliseconds.
    */
   constructor(options) {
     if (undefined === options || undefined === options.token || '' === options.token) {
