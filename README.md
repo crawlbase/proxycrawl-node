@@ -1,3 +1,9 @@
+# DEPRECATION NOTICE
+
+> :warning: **IMPORTANT:** This package is no longer maintained or supported. For the latest updates, please use our new package at [crawlbase-node](https://github.com/crawlbase-source/crawlbase-node).
+
+---
+
 # ProxyCrawl node
 
 Dependency free module for scraping and crawling websites using [ProxyCrawl](https://proxycrawl.com) API
